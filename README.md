@@ -132,10 +132,10 @@ The release build produces a statically linked binary with no runtime dependenci
 │  └────────┴──────────┴──────────┴─────────────────┘  │
 ├──────────────────────────────────────────────────────┤
 │  Business Logic (Rust modules)                       │
-│  Provider chain → fetch → parse → normalise         │
+│  Provider chain → fetch → parse → normalise          │
 ├──────────────────────────────────────────────────────┤
 │  Data Providers (6 APIs + mock)                      │
-│  Try in config order → fallback → mock              │
+│  Try in config order → fallback → mock               │
 └──────────────────────────────────────────────────────┘
 ```
 
