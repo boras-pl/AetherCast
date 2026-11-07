@@ -1,0 +1,167 @@
+// AetherCast — Main Window
+
+import { TodayTab } from "today.slint";
+import { TomorrowTab } from "tomorrow.slint";
+import { WeekTab } from "week.slint";
+import { AboutTab } from "about.slint";
+import { TabButton, WeatherIcon, LoadingSpinner, InfoCard, HumidityBar } from "shared.slint";
+import { WeatherData } from "weather-data.slint";
+
+export component AppWindow inherits Window {
+    property<[string]> Tab: ["Today", "Tomorrow", "Week", "About"];
+    property<int> active-tab: 0;
+
+    in-out property<WeatherData> today-weather;
+    in-out property<WeatherData> tomorrow-weather;
+    in-out property<[WeatherData]> week-weather;
+
+    in-out property<bool> loading: false;
+    in-out property<string> error-message: "";
+
+    preferred-width: 550px;
+    preferred-height: 700px;
+    min-width: 400px;
+    min-height: 500px;
+
+    VerticalLayout {
+        spacing: 0;
+        opacity: loading ? 0.5 : 1.0;
+
+        // Header
+        Rectangle {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            background: rgb(33, 150, 243);
+
+            HorizontalLayout {
+                spacing: 12px;
+
+                Text {
+                    text: "\u{1F324}  AetherCast";
+                    font-size: 20px;
+                    font-weight: FontWeight.bold;
+                    color: white;
+                }
+
+                Rectangle { background: transparent; }
+
+                Text {
+                    text: "v0.1.0";
+                    font-size: 12px;
+                    color: white;
+                    opacity: 0.7;
+                    horizontal-alignment: center;
+                }
+
+                Rectangle {
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 8px;
+                    background: rgb(255, 255, 255);
+
+                    TouchArea {
+                        clicked => { refresh_weather(); }
+                        enabled: !loading;
+                    }
+
+                    Text {
+                        text: "\u{27F3}";
+                        font-size: 18px;
+                        color: rgb(33, 150, 243);
+                        horizontal-alignment: center;
+                        vertical-alignment: center;
+                    }
+                }
+            }
+        }
+
+        // Tab Bar
+        Rectangle {
+            padding-left: 8px;
+            padding-right: 8px;
+            background: rgb(255, 255, 255);
+
+            HorizontalLayout {
+                spacing: 0;
+
+                TabButton {
+                    text: Tab[0];
+                    is-active: active-tab == 0;
+                    clicked => { active-tab = 0; }
+                }
+                TabButton {
+                    text: Tab[1];
+                    is-active: active-tab == 1;
+                    clicked => { active-tab = 1; }
+                }
+                TabButton {
+                    text: Tab[2];
+                    is-active: active-tab == 2;
+                    clicked => { active-tab = 2; }
+                }
+                TabButton {
+                    text: Tab[3];
+                    is-active: active-tab == 3;
+                    clicked => { active-tab = 3; }
+                }
+            }
+        }
+
+        // Error Banner
+        Rectangle {
+            visible: error-message != "";
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            background: rgb(255, 235, 238);
+
+            Text {
+                text: "\u{26A0}  " + error-message;
+                color: rgb(198, 40, 40);
+                font-size: 13px;
+                wrap: TextWrap.word-wrap;
+            }
+        }
+
+        // Loading Overlay
+        Rectangle {
+            visible: loading;
+            background: rgb(255, 255, 255);
+            opacity: 0.8;
+            HorizontalLayout {
+                alignment: LayoutAlignment.center;
+                horizontal-stretch: 1;
+                LoadingSpinner { preferred-width: 48px; preferred-height: 48px; }
+                Text {
+                    text: "Loading weather data...";
+                    font-size: 14px;
+                    color: rgb(117, 117, 117);
+                    padding-left: 12px;
+                }
+            }
+        }
+
+        // Tab Content
+        VerticalLayout {
+            vertical-stretch: 1;
+
+            match active-tab {
+                0: TodayTab { data: today-weather; }
+                1: TomorrowTab { data: tomorrow-weather; }
+                2: WeekTab { week-data: week-weather; }
+                3: AboutTab { }
+                *: { }
+            }
+        }
+    }
+
+    callback refresh_weather();
+    callback set_loading(bool);
+    callback set_error(string);
+    callback set_today_weather(WeatherData);
+    callback set_tomorrow_weather(WeatherData);
+    callback set_week_weather([WeatherData]);
+}

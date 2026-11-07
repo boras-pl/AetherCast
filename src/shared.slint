@@ -1,0 +1,145 @@
+// Shared components used across all tabs
+
+export component WeatherIcon inherits Rectangle {
+    in property<string> icon-code;
+    in property<bool> large: false;
+
+    width: large ? 120px : 48px;
+    height: large ? 120px : 48px;
+    border-radius: 24px;
+    background: icon-color(icon-code);
+
+    Text {
+        text: icon-emoji(icon-code);
+        font-size: large ? 56px : 24px;
+        horizontal-alignment: center;
+        vertical-alignment: center;
+    }
+
+    pure function icon-color(code: string) -> color {
+        if code == "sun" { return rgb(255, 193, 7); }
+        if code == "sun-cloud" { return rgb(255, 183, 77); }
+        if code == "partly-cloudy" { return rgb(144, 164, 174); }
+        if code == "cloud" { return rgb(176, 190, 197); }
+        if code == "fog" { return rgb(158, 158, 158); }
+        if code == "drizzle" { return rgb(100, 181, 246); }
+        if code == "rain" { return rgb(66, 165, 245); }
+        if code == "heavy-rain" { return rgb(30, 136, 229); }
+        if code == "snow" { return rgb(187, 222, 251); }
+        if code == "thunderstorm" { return rgb(103, 58, 183); }
+        return rgb(158, 158, 158);
+    }
+
+    pure function icon-emoji(code: string) -> string {
+        if code == "sun" { return "\u{2600}\u{FE0F}"; }
+        if code == "sun-cloud" { return "\u{1F324}"; }
+        if code == "partly-cloudy" { return "\u{26C5}"; }
+        if code == "cloud" { return "\u{2601}"; }
+        if code == "fog" { return "\u{1F32B}"; }
+        if code == "drizzle" { return "\u{1F326}"; }
+        if code == "rain" { return "\u{1F327}"; }
+        if code == "heavy-rain" { return "\u{1F327}"; }
+        if code == "snow" { return "\u{2744}\u{FE0F}"; }
+        if code == "thunderstorm" { return "\u{26C8}"; }
+        return "\u{1F321}";
+    }
+}
+
+export component InfoCard inherits Rectangle {
+    in property<string> title;
+    in property<string> value;
+    in property<string> subtitle: "";
+
+    preferred-width: 0;
+    preferred-height: 80px;
+    padding: 12px;
+    background: rgb(255, 255, 255);
+    border-radius: 12px;
+    border-width: 1px;
+    border-color: rgb(232, 234, 236);
+
+    VerticalLayout {
+        spacing: 2px;
+        Text {
+            text: title;
+            font-size: 11px;
+            color: rgb(158, 158, 158);
+        }
+        Text {
+            text: value;
+            font-size: 20px;
+            font-weight: FontWeight.bold;
+            color: rgb(33, 33, 33);
+        }
+        if subtitle != "" :
+            Text {
+                text: subtitle;
+                font-size: 11px;
+                color: rgb(158, 158, 158);
+            }
+    }
+}
+
+export component HumidityBar inherits Rectangle {
+    in property<string> percentage;
+
+    preferred-width: 0;
+    preferred-height: 30px;
+    padding-left: 8px;
+    padding-right: 12px;
+    background: rgb(255, 255, 255);
+    border-radius: 12px;
+    border-width: 1px;
+    border-color: rgb(232, 234, 236);
+
+    HorizontalLayout {
+        spacing: 12px;
+        alignment: start;
+        Text { text: "\u{1F4A7}"; font-size: 16px; }
+        Text { text: "Humidity"; font-size: 13px; color: rgb(117, 117, 117); }
+        Rectangle { background: transparent; }
+        Text {
+            text: percentage;
+            font-size: 16px;
+            font-weight: FontWeight.bold;
+            color: rgb(33, 150, 243);
+        }
+    }
+}
+
+export component TabButton inherits Rectangle {
+    in property<string> text;
+    in property<bool> is-active;
+    callback clicked();
+
+    preferred-width: 0;
+    preferred-height: 40px;
+    background: is-active ? rgb(33, 150, 243) : transparent;
+
+    Rectangle {
+        width: parent.width;
+        height: is-active ? 3px : 0px;
+        background: is-active ? rgb(33, 150, 243) : transparent;
+    }
+
+    TouchArea {
+        clicked => { root.clicked(); }
+    }
+
+    Text {
+        text: text;
+        font-size: 14px;
+        font-weight: is-active ? FontWeight.bold : FontWeight.normal;
+        color: is-active ? white : rgb(117, 117, 117);
+        horizontal-alignment: center;
+        vertical-alignment: center;
+    }
+}
+
+export component LoadingSpinner inherits Rectangle {
+    preferred-width: 40px;
+    preferred-height: 40px;
+    border-radius: 20px;
+    border-width: 3px;
+    border-color: rgb(232, 234, 236);
+}

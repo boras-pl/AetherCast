@@ -1,0 +1,90 @@
+// Week Tab — Scrollable 7-day forecast cards
+
+import { WeatherIcon, InfoCard } from "shared.slint";
+import { WeatherData } from "weather-data.slint";
+import { ListView } from "std-widgets.slint";
+
+export component WeekTab inherits Rectangle {
+    in property<[WeatherData]> week-data;
+
+    preferred-width: 0;
+    preferred-height: 0;
+    vertical-stretch: 1;
+
+    VerticalLayout {
+        spacing: 8px;
+        padding: 16px;
+        vertical-stretch: 1;
+
+        Text {
+            text: "7-Day Forecast";
+            font-size: 18px;
+            font-weight: FontWeight.bold;
+            color: rgb(33, 33, 33);
+        }
+
+        ListView {
+            vertical-stretch: 1;
+            for day in week-data :
+                Rectangle {
+                    preferred-width: 0;
+                    preferred-height: 70px;
+                    background: rgb(255, 255, 255);
+                    border-radius: 12px;
+                    border-width: 1px;
+                    border-color: rgb(232, 234, 236);
+
+                    HorizontalLayout {
+                        spacing: 16px;
+                        alignment: LayoutAlignment.center;
+
+                        Text {
+                            text: day.date;
+                            font-size: 14px;
+                            font-weight: FontWeight.bold;
+                            color: rgb(33, 33, 33);
+                            preferred-width: 80px;
+                        }
+
+                        WeatherIcon {
+                            icon-code: day.icon-code;
+                            preferred-width: 40px;
+                            preferred-height: 40px;
+                        }
+
+                        Text {
+                            text: day.condition;
+                            font-size: 13px;
+                            color: rgb(117, 117, 117);
+                            horizontal-stretch: 1;
+                        }
+
+                        InfoCard {
+                            title: "Rain";
+                            value: day.precipitation;
+                            subtitle: "mm";
+                            preferred-width: 70px;
+                        }
+
+                        HorizontalLayout {
+                            spacing: 8px;
+                            preferred-width: 80px;
+                            alignment: LayoutAlignment.end;
+
+                            Text {
+                                text: day.temp-min;
+                                font-size: 13px;
+                                color: rgb(100, 100, 100);
+                            }
+                            Text {
+                                text: day.temp-max;
+                                font-size: 14px;
+                                font-weight: FontWeight.bold;
+                                color: rgb(33, 33, 33);
+                            }
+                        }
+                    }
+                }
+        }
+    }
+}

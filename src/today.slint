@@ -1,0 +1,91 @@
+// Today Tab — Detailed weather display for today
+
+import { WeatherIcon, InfoCard, HumidityBar } from "shared.slint";
+import { WeatherData } from "weather-data.slint";
+
+export component TodayTab inherits Rectangle {
+    in property<WeatherData> data;
+
+    preferred-width: 0;
+    preferred-height: 0;
+    vertical-stretch: 1;
+
+    VerticalLayout {
+        spacing: 16px;
+        padding: 20px;
+        vertical-stretch: 1;
+
+    HorizontalLayout {
+        spacing: 20px;
+        vertical-stretch: 1;
+
+        WeatherIcon {
+            icon-code: data.icon-code;
+            large: true;
+            preferred-width: 140px;
+            preferred-height: 140px;
+        }
+
+        VerticalLayout {
+            spacing: 10px;
+            horizontal-stretch: 1;
+
+            InfoCard {
+                title: "Temperature";
+                value: data.temperature;
+                subtitle: data.condition;
+            }
+            InfoCard {
+                title: "Feels Like";
+                value: data.feels-like;
+            }
+            InfoCard {
+                title: "Condition";
+                value: data.description;
+            }
+        }
+    }
+
+    HorizontalLayout {
+        spacing: 12px;
+        horizontal-stretch: 1;
+
+        InfoCard {
+            title: "Pressure";
+            value: data.pressure;
+            subtitle: "hPa";
+        }
+        InfoCard {
+            title: "Wind";
+            value: data.wind-speed;
+            subtitle: data.wind-direction;
+        }
+        InfoCard {
+            title: "Precipitation";
+            value: data.precipitation;
+            subtitle: "mm";
+        }
+    }
+
+    HorizontalLayout {
+        spacing: 12px;
+        horizontal-stretch: 1;
+
+        InfoCard { title: "Min Temp"; value: data.temp-min; }
+        InfoCard { title: "Max Temp"; value: data.temp-max; }
+        HumidityBar { percentage: data.humidity; }
+    }
+
+    HorizontalLayout {
+        spacing: 12px;
+        horizontal-stretch: 1;
+
+        InfoCard { title: "UV Index"; value: data.uv-index; }
+        InfoCard {
+            title: "Visibility";
+            value: data.visibility;
+            subtitle: "km";
+        }
+    }
+    }
+}

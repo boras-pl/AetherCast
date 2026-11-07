@@ -1,0 +1,158 @@
+// About Tab — Application information and credits
+
+import { InfoCard } from "shared.slint";
+import { ScrollView } from "std-widgets.slint";
+
+export component AboutTab inherits Rectangle {
+    preferred-width: 0;
+    vertical-stretch: 1;
+
+    ScrollView {
+        vertical-stretch: 1;
+
+        VerticalLayout {
+            spacing: 16px;
+            padding: 20px;
+            preferred-width: 0;
+
+        HorizontalLayout {
+            spacing: 16px;
+            alignment: LayoutAlignment.center;
+
+            Text { text: "\u{1F324}"; font-size: 40px; }
+
+            VerticalLayout {
+                spacing: 2px;
+                Text {
+                    text: "AetherCast";
+                    font-size: 24px;
+                    font-weight: FontWeight.bold;
+                    color: rgb(33, 33, 33);
+                }
+                Text {
+                    text: "Version 0.1.0";
+                    font-size: 13px;
+                    color: rgb(158, 158, 158);
+                }
+            }
+        }
+
+        Rectangle {
+            height: 1px;
+            background: rgb(232, 234, 236);
+        }
+
+        Text {
+            text: "Technologies";
+            font-size: 16px;
+            font-weight: FontWeight.bold;
+            color: rgb(33, 33, 33);
+        }
+
+        InfoCard {
+            title: "Language";
+            value: "Rust 2024";
+            subtitle: "Safe, fast, concurrent systems programming";
+        }
+        InfoCard {
+            title: "UI Framework";
+            value: "Slint 1.18";
+            subtitle: "Modern GUI toolkit with declarative markup";
+        }
+        InfoCard {
+            title: "HTTP Client";
+            value: "reqwest 0.13";
+            subtitle: "Async HTTP client with TLS";
+        }
+        InfoCard {
+            title: "Async Runtime";
+            value: "tokio 1";
+            subtitle: "Asynchronous Rust runtime";
+        }
+        InfoCard {
+            title: "Logging";
+            value: "tracing 0.1";
+            subtitle: "Structured logging with tracing-subscriber";
+        }
+        InfoCard {
+            title: "Date/Time";
+            value: "chrono 0.4";
+            subtitle: "Date and time library";
+        }
+
+        Rectangle {
+            height: 1px;
+            background: rgb(232, 234, 236);
+        }
+
+        Text {
+            text: "Weather Data Providers";
+            font-size: 16px;
+            font-weight: FontWeight.bold;
+            color: rgb(33, 33, 33);
+        }
+
+        InfoCard {
+            title: "Primary";
+            value: "Open-Meteo";
+            subtitle: "Free, no API key required";
+        }
+        InfoCard {
+            title: "Fallback 1";
+            value: "wttr.in";
+            subtitle: "Simple free weather API";
+        }
+        InfoCard {
+            title: "Fallback 2";
+            value: "OpenWeatherMap";
+            subtitle: "Popular API, free tier available";
+        }
+        InfoCard {
+            title: "Fallback 3";
+            value: "WeatherAPI.com";
+            subtitle: "1M requests/month free";
+        }
+        InfoCard {
+            title: "Fallback 4";
+            value: "Visual Crossing";
+            subtitle: "1000 requests/day free";
+        }
+        InfoCard {
+            title: "Offline";
+            value: "Mock Provider";
+            subtitle: "Sample data for testing";
+        }
+
+        Rectangle {
+            height: 1px;
+            background: rgb(232, 234, 236);
+        }
+
+        Text {
+            text: "Credits & Links";
+            font-size: 16px;
+            font-weight: FontWeight.bold;
+            color: rgb(33, 33, 33);
+        }
+
+        InfoCard {
+            title: "Slint";
+            value: "slint.dev";
+            subtitle: "https://slint.dev";
+        }
+        InfoCard {
+            title: "Rust";
+            value: "rust-lang.org";
+            subtitle: "https://www.rust-lang.org";
+        }
+
+        Text {
+            text: "MIT License";
+            font-size: 12px;
+            color: rgb(158, 158, 158);
+            horizontal-alignment: center;
+        }
+        Rectangle { height: 20px; }
+        }
+    }
+}
