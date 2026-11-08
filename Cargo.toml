@@ -3,7 +3,7 @@
 
 [package]
 name = "AetherCast"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 description = "A desktop weather application with Slint UI and multi-provider weather APIs"
 authors = ["AetherCast Contributors"]
