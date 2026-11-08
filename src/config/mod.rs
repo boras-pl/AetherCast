@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! Configuration module.
 //!
 //! Loads and saves application settings from a TOML config file.

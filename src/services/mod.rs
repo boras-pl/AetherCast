@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! Weather services module.
 //!
 //! Defines the trait for weather providers and the fallback chain.

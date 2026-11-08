@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! WeatherAPI.com API adapter.
 //!
 //! Good free tier (1M requests/month).

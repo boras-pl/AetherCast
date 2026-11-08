@@ -151,4 +151,11 @@ AetherCast was scaffolded and developed using **PolyStrata** ([simplexai-labs/Po
 
 ## License
 
-MIT — see the [LICENSE](LICENSE) file for details.
+This project uses a dual-license model:
+
+- **AetherCast source code** — [MIT License](LICENSE)
+- **Slint UI framework** — [GNU GPLv3](LICENSE-GPLv3) (or royalty-free / commercial)
+
+Because Slint is statically linked into the binary, the combined work is distributed under the terms of the GPLv3. You may redistribute and modify this project under the GPLv3. Your own source code remains MIT-licensed and is compatible with GPL-3.0.
+
+See the [LICENSE](LICENSE) and [LICENSE-GPLv3](LICENSE-GPLv3) files for full text.

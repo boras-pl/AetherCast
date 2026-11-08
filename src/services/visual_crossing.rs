@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! Visual Crossing API adapter.
 //!
 //! 1000 requests/day free tier.

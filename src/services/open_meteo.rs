@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! Open-Meteo API adapter.
 //!
 //! Fully free, no API key required. Primary provider.

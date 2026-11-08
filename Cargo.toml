@@ -1,3 +1,6 @@
+# Copyright © 2026 AetherCast Contributors
+# SPDX-License-Identifier: MIT
+
 [package]
 name = "AetherCast"
 version = "0.1.0"

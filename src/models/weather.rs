@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! Weather data models.
 //!
 //! Defines the core data structures for weather information.

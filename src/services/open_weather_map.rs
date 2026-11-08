@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! OpenWeatherMap API adapter.
 //!
 //! Popular weather API with a generous free tier (1000 calls/day).

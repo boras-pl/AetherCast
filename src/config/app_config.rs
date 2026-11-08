@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! Application configuration.
 //!
 //! Manages loading and saving of `config.toml` from `~/.config/AetherCast/`.

@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! Weather service trait and error types.
 //!
 //! Defines the abstraction for weather data providers.

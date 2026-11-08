@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! Logging initialization.
 //!
 //! Sets up tracing-subscriber with both console and file output.

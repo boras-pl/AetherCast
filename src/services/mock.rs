@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! Mock / offline weather data provider.
 //!
 //! Returns deterministic sample data for testing the UI without network access.

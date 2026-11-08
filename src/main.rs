@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! AetherCast — Main Entry Point
 //!
 //! A desktop weather application with Slint UI and multi-provider weather APIs.

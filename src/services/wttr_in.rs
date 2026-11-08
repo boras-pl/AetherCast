@@ -1,3 +1,6 @@
+// Copyright © 2026 AetherCast Contributors
+// SPDX-License-Identifier: MIT
+
 //! wttr.in API adapter.
 //!
 //! Simple, free API without authentication. Great for quick lookups.
